@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>books</title>
+</head>
+<body>
+    <table>
+        <tr><th>Name</th><th>Writer</th><th>Genre</th></tr>
+        <!-- <tr><td>Holy Potter</td><td>Roulig Kowling</td><td>Fantasy</td></tr> -->
+        <% if(data.length){
+            for (let i = 0; i < data.length; i++) {%>
+                <tr>
+                    <td><%= data[i].name%></td>
+                    <td><%= data[i].writer%></td>
+                    <td><%= data[i].genre%></td>
+                </tr>
+            <% }
+        }else{ %>
+            <tr>
+                <td colspan="3">No user</td></tr>
+        <% } %> 
+    </table>
+</body>
+</html>
