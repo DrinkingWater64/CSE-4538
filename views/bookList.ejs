@@ -29,11 +29,11 @@
             <td><%=books[i].name%></td>
             <td><%=books[i].author%></td>
             <td><%=books[i].genre%></td>
-            <td><form action="/book-list:delete" method="post">
+            <td><form action="/book-list/delete" method="post">
                 <input type="hidden" value=<%=books[i].id%>  name="id"/>
                 <input type="submit" name="delete" value="remove"/>
             </form></td>
-            <td><form action="/book-list:edit" method="post">
+            <td><form action="/book-list/edit" method="post">
                 <input type="hidden" value=<%=books[i].id%>  name="id"/>
                 <input type="submit" name="edit" value="edit"/>
             </form></td>

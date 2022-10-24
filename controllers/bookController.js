@@ -55,8 +55,19 @@ const postBookList = async (req, res) => {
     }
 }
 
+const deleteBook = async (req, res) => {
+  await bookModel.findByIdAndDelete(req.body.id);
+  res.redirect('/book-list');
+}
+
 const getEdit = (req, res) => {
   res.render('editBooks');
+}
+
+const editBook = (req, res) => {
+  this.id = req.body.id;
+  console.log(this.id);
+  res.redirect('/edit');
 }
 
 const postEditBooks = async (req, res) => {
@@ -74,4 +85,4 @@ const postEditBooks = async (req, res) => {
 
 
 
-module.exports = { getBookList, getBook, postBook, postBookList, postEditBooks, getEdit };
+module.exports = { getBookList, getBook, postBook, postBookList, postEditBooks, getEdit, deleteBook, editBook};
