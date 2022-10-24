@@ -13,6 +13,56 @@
             padding: 10px;
         }
     </style>
+        <script>
+            let saminerVarl = false;
+            let childAdded;
+
+            const createEdit = () => {
+                let body = document.getElementsByTagName('body')[0];
+                
+                console.log("baaaaaaaaaaaaa");
+                form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/edit');
+    
+                //name input field
+                nameInput = document.createElement('input');
+                nameInput.setAttribute('type', 'text');
+                nameInput.setAttribute('id', 'name');
+                nameInput.setAttribute('name', 'name');
+    
+                authorInput = document.createElement('input');
+                authorInput.setAttribute('type', 'text');
+                authorInput.setAttribute('id', 'author');
+                authorInput.setAttribute('name', 'author');
+    
+                genreInput = document.createElement('input');
+                genreInput.setAttribute('type', 'text');
+                genreInput.setAttribute('id', 'genre');
+                genreInput.setAttribute('name', 'genre');
+    
+                submitbtn = document.createElement('input');
+                submitbtn.setAttribute('type', 'submit');
+                submitbtn.setAttribute('value', 'save');
+    
+                form.appendChild(nameInput);
+                form.appendChild(authorInput);
+                form.appendChild(genreInput);
+                form.appendChild(submitbtn);
+
+
+                if(saminerVar !== true){
+                    childAdded = body.appendChild(form);
+                    saminerVar = true;
+                }
+                else if(saminerVar === true){
+                 //   console.log(childAdded);
+
+                   body.removeChild(childAdded);
+                    saminerVar = false;
+                }
+            }
+        </script>
   </head>
   <body>
     <table>
@@ -22,21 +72,77 @@
         <th>Genre</td>
     </tr>
 
-    <script></script>
+
 
     <%for(let i=0; i<books.length; i++){%>
-        <tr>
+        <tr>  
             <td><%=books[i].name%></td>
             <td><%=books[i].author%></td>
             <td><%=books[i].genre%></td>
             <td><form action="/book-list/delete" method="post">
                 <input type="hidden" value=<%=books[i].id%>  name="id"/>
                 <input type="submit" name="delete" value="remove"/>
-            </form></td>
+            </form>
+            
+                <script>
+                let samin<%=i%> = false;
+                test<%=i%> = () =>{
+                let body = document.getElementsByTagName('body')[0];
+                
+                console.log("baaaaaaaaaaaaa");
+                form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/edit');
+    
+                //name input field
+                nameInput = document.createElement('input');
+                nameInput.setAttribute('type', 'text');
+                nameInput.setAttribute('id', 'name');
+                nameInput.setAttribute('name', 'name');
+    
+                authorInput = document.createElement('input');
+                authorInput.setAttribute('type', 'text');
+                authorInput.setAttribute('id', 'author');
+                authorInput.setAttribute('name', 'author');
+    
+                genreInput = document.createElement('input');
+                genreInput.setAttribute('type', 'text');
+                genreInput.setAttribute('id', 'genre');
+                genreInput.setAttribute('name', 'genre');
+    
+                submitbtn = document.createElement('input');
+                submitbtn.setAttribute('type', 'submit');
+                submitbtn.setAttribute('value', 'save');
+    
+                form.appendChild(nameInput);
+                form.appendChild(authorInput);
+                form.appendChild(genreInput);
+                form.appendChild(submitbtn);
+
+
+                if(samin<%=i%> !== true){
+                    console.log(samin<%=i%>);
+                    childAdded<%=i%> = body.appendChild(form);
+                    samin<%=i%> = true;
+                }
+                else if(samin<%=i%> === true){
+                 //   console.log(childAdded);
+                 console.log(samin<%=i%>);
+
+                   body.removeChild(childAdded<%=i%>);
+                   samin<%=i%> = false;
+                }
+                    
+                }
+                 </script>
+            </td>
+
             <td><form action="/book-list/edit" method="post">
                 <input type="hidden" value=<%=books[i].id%>  name="id"/>
                 <input type="submit" name="edit" value="edit"/>
             </form></td>
+
+            <td><button onclick="test<%=i%>()">ifty</button></td>
         </tr>
     <%}%>
 </table>
