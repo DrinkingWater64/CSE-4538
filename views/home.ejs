@@ -1,0 +1,21 @@
+<h1>Hi, there!</h1>
+
+
+<form method="post" action="/sendText">
+  <label for="sender">Sender</label>
+  <select name="sender" id="sender">
+    <% if(users.length){ for(var i = 0; i < users.length; i++) {%>
+    <option value=<%= users[i].username%>><%= users[i].username%></option>
+    <% } %> <% } %>
+  </select>
+
+  <label for="reciever">reciever</label>
+  <select name="reciever" id="reciever">
+    <% if(users.length){ for(var i = 0; i < users.length; i++) {%>
+    <option value=<%= users[i].username%>><%= users[i].username%></option>
+    <% } %> <% } %>
+  </select>
+
+  <input type="text" name="text" id="text" placeholder="name" />
+  <button type="submit">send</button>
+</form>
