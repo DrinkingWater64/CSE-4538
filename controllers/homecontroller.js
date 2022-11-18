@@ -2,13 +2,6 @@ const data = require('../Model/users-text.json')
 const rec = require('../R.json');
 const fs = require('fs');
 
-// console.log(data);
-
-const track ={
-    sender: "",
-    reciever: "",
-    text: ""
-}
 
 const tracks = rec; 
 
@@ -16,13 +9,24 @@ const getHome = (req, res) => {
     res.render('home', {users: data});
 }
 
-function sendText(req, res) {
+const sendText = (req, res) => {
 
     tracks.push({sender:req.body.sender, reciever:req.body.reciever, text:req.body.text});
     
     console.log(tracks);
     makeRecored(tracks);
     res.redirect('/');
+}
+
+
+const showText = (req, res) => {
+    let r =  req.body.reciever;
+    // res.redirect("/user");
+    res.render('profile', {users: data, texts: tracks, rec: r});
+}
+
+const viewProfile = (req, res) => {
+    res.render('profile', {users: data, texts: tracks, rec: 'null'});
 }
 
 makeRecored = (tracks) => {
@@ -37,4 +41,4 @@ makeRecored = (tracks) => {
 
 }
 
-module.exports = {getHome , sendText, tracks};
+module.exports = {getHome , sendText, viewProfile, showText};

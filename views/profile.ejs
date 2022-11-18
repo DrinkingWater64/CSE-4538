@@ -1,0 +1,26 @@
+<form method="post" action="/getUser">
+  <label for="reciever">reciever</label>
+  <select name="reciever" id="reciever">
+    <% if(users.length){ for(var i = 0; i < users.length; i++) {%>
+    <option value=<%= users[i].username%>><%= users[i].username%></option>
+    <% } %> <% } %>
+  </select>
+
+  <button type="submit">send</button>
+</form>
+
+<body>
+    <table>
+        <% if(texts.length !== 0){
+            for(var i = 0; i < texts.length; i++){ 
+                if(texts[i].reciever === rec || texts[i].reciever === '@everyone'){%>
+                <tr><td><%= texts[i].sender+":" %></td>
+                    <td><%= texts[i].text %></td>
+                </tr>
+                <% } %>
+            <% } %>
+        <% } %>    
+
+    </table>
+</body>
+
